@@ -817,3 +817,194 @@ a:focus {
   font-weight: 500;
   text-align: center;
 }
+
+[hidden] {
+  display: none !important;
+}
+
+.section-intro {
+  max-width: 720px;
+  margin: -0.5rem auto 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.speed-tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--background-accent);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-style: normal;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* vx / vy / ωz 标签页 */
+.command-tabs.tabs.is-toggle a {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 600;
+  padding: 0.5em 1.25em;
+}
+
+.command-tabs.tabs.is-toggle a:hover {
+  background: var(--background-accent);
+}
+
+.command-tabs.tabs.is-toggle li.is-active a {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: #fff;
+}
+
+/* 负载 / 方向 / 轨迹选择按钮 */
+.clip-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.option-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.option-label {
+  margin-right: 0.25rem;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.option-btn {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--background-primary);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.option-btn:hover {
+  border-color: var(--text-light);
+  color: var(--text-primary);
+}
+
+.option-btn.is-active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+/* 两个视角并排的视频 */
+.clip video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  background: #0f172a;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.view-label {
+  margin-top: 0.5rem;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.clip-caption {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: center;
+}
+
+.timelapse {
+  margin-top: 2.5rem;
+}
+
+.timelapse.is-narrow {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timelapse-pair .timelapse {
+  margin-top: 0;
+}
+
+.timelapse-pair {
+  margin-top: 1.5rem;
+}
+
+.timelapse img {
+  box-shadow: var(--shadow-md);
+}
+
+.paper-figure figcaption {
+  margin-top: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.experiment-grid video {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #0f172a;
+}
+
+/* 方法部分 */
+.render-figure {
+  margin: 0;
+}
+
+.render-figure img {
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+}
+
+.method-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.method-text strong {
+  color: var(--text-primary);
+}
+
+.method-text li + li {
+  margin-top: 0.6rem;
+}
+
+@media screen and (max-width: 480px) {
+  .command-tabs.tabs.is-toggle a {
+    padding: 0.45em 0.75em;
+    font-size: 0.85rem;
+  }
+
+  .clip-options {
+    gap: 0.6rem 1.25rem;
+  }
+}

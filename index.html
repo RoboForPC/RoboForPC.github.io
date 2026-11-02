@@ -8,33 +8,31 @@
   <title>ForPC: Paper Title Goes Here</title>
 
   <!-- 搜索引擎 / 社交平台分享时显示的信息 -->
-  <!-- TODO: 标题、一句话简介（150 字符左右）、关键词、作者 -->
+  <!-- TODO: 标题、作者 -->
   <meta name="title" content="ForPC: Paper Title Goes Here">
-  <meta name="description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
-  <meta name="keywords" content="robotics, robot learning, KEYWORD1, KEYWORD2">
+  <meta name="description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
+  <meta name="keywords" content="humanoid robot, cart pushing, loco-manipulation, reinforcement learning, teacher-student, Unitree G1">
   <meta name="author" content="FIRST_AUTHOR, SECOND_AUTHOR">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="RoboForPC">
   <meta property="og:title" content="ForPC: Paper Title Goes Here">
-  <meta property="og:description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
+  <meta property="og:description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
   <meta property="og:url" content="https://roboforpc.github.io/">
-  <!-- TODO: 做一张 1200x630 的预览图放到 static/images/social_preview.png（链接发出去时显示的卡片图） -->
-  <meta property="og:image" content="https://roboforpc.github.io/static/images/social_preview.png">
+  <meta property="og:image" content="https://roboforpc.github.io/static/images/social_preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ForPC: Paper Title Goes Here">
-  <meta name="twitter:description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
-  <meta name="twitter:image" content="https://roboforpc.github.io/static/images/social_preview.png">
+  <meta name="twitter:description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
+  <meta name="twitter:image" content="https://roboforpc.github.io/static/images/social_preview.jpg">
 
   <!-- Google Scholar 收录用。TODO: 每位作者一行 citation_author，格式 "姓, 名" -->
   <meta name="citation_title" content="Paper Title Goes Here">
   <meta name="citation_author" content="LAST_NAME, FIRST_NAME">
   <meta name="citation_publication_date" content="2026">
-  <meta name="citation_conference_title" content="VENUE_NAME">
-  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/ARXIV_ID">
+  <meta name="citation_journal_title" content="VENUE_NAME">
 
   <meta name="theme-color" content="#2563eb">
   <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
@@ -43,18 +41,15 @@
   <link rel="stylesheet" href="static/css/index.css">
 
   <!-- 非关键样式异步加载。Google 字体在国内经常打不开，所以也异步，不让它卡住整页 -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
 
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/index.js"></script>
 </head>
 <body>
@@ -106,12 +101,14 @@
                   <span>arXiv</span>
                 </a>
               </span>
+              <!-- 完整视频上传到 YouTube / B 站后，取消注释，并打开下面 Video 部分
               <span class="link-block">
                 <a href="#video" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-youtube"></i></span>
                   <span>Video</span>
                 </a>
               </span>
+              -->
               <span class="link-block">
                 <a href="https://github.com/RoboForPC/CODE_REPO" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
@@ -125,17 +122,17 @@
     </div>
   </section>
 
-  <!-- ========== 首屏视频：最能体现机器人效果的一段，10~30 秒，自动循环播放、静音 ========== -->
-  <!-- 把视频命名为 teaser.mp4 放进 static/videos/ 即可，不用改代码 -->
+  <!-- ========== 首屏视频：长路径连续任务 ========== -->
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <video id="teaser" autoplay muted loop playsinline preload="metadata" aria-label="Teaser video">
+        <video id="teaser" autoplay muted loop playsinline preload="auto" poster="static/images/posters/teaser.jpg" aria-label="Teaser video">
           <source src="static/videos/teaser.mp4" type="video/mp4">
         </video>
-        <!-- TODO: 一句话说清楚论文做了什么 -->
         <h2 class="subtitle has-text-centered">
-          <span class="dnerf">ForPC</span> ONE_SENTENCE_SUMMARY_OF_WHAT_THE_ROBOT_CAN_DO.
+          A Unitree G1 humanoid pushes a loaded cart through a long-horizon continuous task,
+          using only its own joint sensing to feel and regulate the hand&ndash;cart interaction force.
+          <span class="speed-tag">4&times; speed</span>
         </h2>
       </div>
     </div>
@@ -148,9 +145,19 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <!-- TODO: 论文摘要，可以分成几段 <p> -->
+            <!-- TODO: 这段是根据 docs/paper_method_stage2_teacher_student.md 写的草稿，请换成论文正式摘要 -->
             <p>
-              PASTE_THE_ABSTRACT_HERE.
+              When a humanoid robot pushes a cart, everything it does to the cart passes through its hands.
+              Whether the cart moves, whether the hands slip on the handle, and how well a velocity command is tracked
+              all depend on the interaction force, which in turn depends on grip friction, cart mass, rolling resistance
+              and external disturbances&mdash;none of which can be measured on the real robot.
+              We present ForPC, a hierarchical controller in which a high-level push-cart policy drives a frozen
+              locomotion policy by correcting its velocity commands, offsetting upper-body joint targets and adding
+              bounded leg residuals. We model the hand&ndash;handle contact with load-dependent elasto-plastic friction,
+              derive force-aware rewards from this contact model, and train the policy with a teacher&ndash;student scheme
+              whose latent context is restricted to what can be recovered from deployable history.
+              Deployed on a Unitree G1 without force sensors, the policy tracks forward, lateral and turning commands
+              with payloads of up to 25&nbsp;kg and completes long-horizon delivery tasks.
             </p>
           </div>
         </div>
@@ -158,102 +165,387 @@
     </div>
   </section>
 
-  <!-- ========== 完整视频：放 YouTube 或 B 站（大视频不要直接放进仓库） ========== -->
-  <section class="hero is-small" id="video">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Video</h2>
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <!-- TODO: 视频上传后，删掉下面这个占位框，再取消其中一个 iframe 的注释并填上视频 ID -->
-            <div class="media-placeholder">
-              <i class="fab fa-youtube fa-2x"></i>
-              <span>Full video (YouTube / Bilibili)</span>
+  <!-- ========== 速度指令跟踪：vx / vy / ωz，每个工况两个视角 ========== -->
+  <!-- 视频文件命名：<指令>_<负载>_<方向>_<视角>.mp4，比如 vy_12kg_left_top.mp4 -->
+  <section class="section" id="tracking">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Velocity Command Tracking</h2>
+      <p class="section-intro">
+        The policy tracks planar velocity commands &mdash; forward <i>v<sub>x</sub></i>, lateral <i>v<sub>y</sub></i>
+        and turning <i>&omega;<sub>z</sub></i> &mdash; with different payloads on the cart.
+        Every run is recorded from two viewpoints.
+      </p>
+
+      <div class="tabs is-toggle is-toggle-rounded is-centered command-tabs">
+        <ul>
+          <li class="is-active" data-target="panel-vx"><a>Forward&nbsp;<i>v<sub>x</sub></i></a></li>
+          <li data-target="panel-vy"><a>Lateral&nbsp;<i>v<sub>y</sub></i></a></li>
+          <li data-target="panel-wz"><a>Turning&nbsp;<i>&omega;<sub>z</sub></i></a></li>
+        </ul>
+      </div>
+
+      <!-- vx -->
+      <div class="tab-panel clip-switcher" id="panel-vx">
+        <div class="clip">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="metadata" poster="static/images/posters/vx_front.jpg" aria-label="Forward, front view">
+                <source src="static/videos/vx_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
             </div>
-            <!-- YouTube：把 YOUTUBE_ID 换成视频链接 watch?v= 后面那串
-            <div class="publication-video">
-              <iframe src="https://www.youtube.com/embed/YOUTUBE_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="metadata" poster="static/images/posters/vx_side.jpg" aria-label="Forward, side view">
+                <source src="static/videos/vx_side.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Side view</p>
             </div>
-            -->
-            <!-- B 站：把 BV_ID 换成 BV 号
-            <div class="publication-video">
-              <iframe src="https://player.bilibili.com/player.html?bvid=BV_ID&autoplay=0" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <p class="clip-caption"><i>v<sub>x</sub></i> = 0.3 m/s <span class="speed-tag">2&times; speed</span></p>
+        </div>
+        <figure class="paper-figure timelapse">
+          <img src="static/images/timelapse_vx.jpg" alt="Timelapse of forward pushing" loading="lazy">
+          <figcaption>Timelapse of forward pushing at <i>v<sub>x</sub></i> = 0.3 m/s.</figcaption>
+        </figure>
+      </div>
+
+      <!-- vy -->
+      <div class="tab-panel clip-switcher" id="panel-vy" hidden>
+        <div class="clip-options">
+          <div class="option-group" data-option="payload">
+            <span class="option-label">Payload</span>
+            <button class="option-btn is-active" data-value="0">0 kg</button>
+            <button class="option-btn" data-value="12.5">12.5 kg</button>
+          </div>
+          <div class="option-group" data-option="dir">
+            <span class="option-label">Direction</span>
+            <button class="option-btn is-active" data-value="left">Left</button>
+            <button class="option-btn" data-value="right">Right</button>
+          </div>
+        </div>
+
+        <div class="clip" data-payload="0" data-dir="left">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_0kg_left_front.jpg" aria-label="Lateral, 0 kg, left, front view">
+                <source src="static/videos/vy_0kg_left_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
             </div>
-            -->
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_0kg_left_top.jpg" aria-label="Lateral, 0 kg, left, high-angle view">
+                <source src="static/videos/vy_0kg_left_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>v<sub>y</sub></i> = 0.2 m/s to the left, empty cart <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-payload="0" data-dir="right">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_0kg_right_front.jpg" aria-label="Lateral, 0 kg, right, front view">
+                <source src="static/videos/vy_0kg_right_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_0kg_right_top.jpg" aria-label="Lateral, 0 kg, right, high-angle view">
+                <source src="static/videos/vy_0kg_right_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>v<sub>y</sub></i> = 0.2 m/s to the right, empty cart <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-payload="12.5" data-dir="left">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_12kg_left_front.jpg" aria-label="Lateral, 12.5 kg, left, front view">
+                <source src="static/videos/vy_12kg_left_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_12kg_left_top.jpg" aria-label="Lateral, 12.5 kg, left, high-angle view">
+                <source src="static/videos/vy_12kg_left_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>v<sub>y</sub></i> = 0.2 m/s to the left, 12.5 kg payload <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-payload="12.5" data-dir="right">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_12kg_right_front.jpg" aria-label="Lateral, 12.5 kg, right, front view">
+                <source src="static/videos/vy_12kg_right_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/vy_12kg_right_top.jpg" aria-label="Lateral, 12.5 kg, right, high-angle view">
+                <source src="static/videos/vy_12kg_right_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>v<sub>y</sub></i> = 0.2 m/s to the right, 12.5 kg payload <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <figure class="paper-figure timelapse is-narrow">
+          <img src="static/images/timelapse_vy.jpg" alt="Timelapse of lateral pushing with a 12.5 kg payload" loading="lazy">
+          <figcaption>High-angle timelapse of lateral pushing with a 12.5 kg payload; the arrow traces the cart.</figcaption>
+        </figure>
+      </div>
+
+      <!-- ωz -->
+      <div class="tab-panel clip-switcher" id="panel-wz" hidden>
+        <div class="clip-options">
+          <div class="option-group" data-option="payload">
+            <span class="option-label">Payload</span>
+            <button class="option-btn is-active" data-value="0">0 kg</button>
+            <button class="option-btn" data-value="12.5">12.5 kg</button>
+            <button class="option-btn" data-value="25">25 kg</button>
+          </div>
+        </div>
+
+        <div class="clip" data-payload="0">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_0kg_front.jpg" aria-label="Turning, 0 kg, front view">
+                <source src="static/videos/wz_0kg_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_0kg_top.jpg" aria-label="Turning, 0 kg, high-angle view">
+                <source src="static/videos/wz_0kg_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>&omega;<sub>z</sub></i> = 0.4 rad/s, empty cart <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-payload="12.5">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_12kg_front.jpg" aria-label="Turning, 12.5 kg, front view">
+                <source src="static/videos/wz_12kg_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_12kg_top.jpg" aria-label="Turning, 12.5 kg, high-angle view">
+                <source src="static/videos/wz_12kg_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>&omega;<sub>z</sub></i> = 0.4 rad/s, 12.5 kg payload <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-payload="25">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_25kg_front.jpg" aria-label="Turning, 25 kg, front view">
+                <source src="static/videos/wz_25kg_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/wz_25kg_top.jpg" aria-label="Turning, 25 kg, high-angle view">
+                <source src="static/videos/wz_25kg_top.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">High-angle view</p>
+            </div>
+          </div>
+          <p class="clip-caption"><i>&omega;<sub>z</sub></i> = 0.4 rad/s, 25 kg payload <span class="speed-tag">2&times; speed</span></p>
+        </div>
+
+        <div class="columns is-vcentered timelapse-pair">
+          <div class="column is-5">
+            <figure class="paper-figure timelapse">
+              <img src="static/images/timelapse_wz.jpg" alt="High-angle timelapse of turning with a 25 kg payload" loading="lazy">
+              <figcaption>Turning with a 25 kg payload; the arrow traces the handle.</figcaption>
+            </figure>
+          </div>
+          <div class="column is-7">
+            <figure class="paper-figure timelapse">
+              <img src="static/images/timelapse_wz_grid.jpg" alt="Turning snapshots for 0, 12.5 and 25 kg payloads" loading="lazy">
+              <figcaption>Snapshots at cart headings of 5&deg;, 90&deg;, 185&deg; and 275&deg; for 0, 12.5 and 25 kg payloads.</figcaption>
+            </figure>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 方法 ========== -->
-  <section class="section hero is-light">
+  <!-- ========== 轨迹跟踪：三条轨迹，正面 + 侧面 ========== -->
+  <section class="section hero is-light" id="trajectory">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Method</h2>
-      <!-- 方法框图命名为 method_overview.png 放进 static/images/ -->
-      <figure class="paper-figure">
-        <img src="static/images/method_overview.png" alt="Method overview">
-      </figure>
-      <div class="content has-text-justified">
-        <!-- TODO: 方法简介，2~3 段，讲清楚输入、核心模块、输出 -->
-        <p>
-          DESCRIBE_THE_METHOD_HERE.
-        </p>
+      <h2 class="title is-3 has-text-centered">Trajectory Following</h2>
+      <!-- TODO: 如果三条轨迹各有名字/形状（比如 S 形、绕行），把下面按钮和说明改成具体名称 -->
+      <p class="section-intro">
+        Following longer paths that combine forward motion and turning, recorded from a front and a side camera.
+      </p>
+
+      <div class="clip-switcher">
+        <div class="clip-options">
+          <div class="option-group" data-option="traj">
+            <span class="option-label">Trajectory</span>
+            <button class="option-btn is-active" data-value="1">1</button>
+            <button class="option-btn" data-value="2">2</button>
+            <button class="option-btn" data-value="3">3</button>
+          </div>
+        </div>
+
+        <div class="clip" data-traj="1">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_1_front.jpg" aria-label="Trajectory 1, front view">
+                <source src="static/videos/traj_1_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_1_side.jpg" aria-label="Trajectory 1, side view">
+                <source src="static/videos/traj_1_side.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Side view</p>
+            </div>
+          </div>
+          <p class="clip-caption">Trajectory 1 <span class="speed-tag">3&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-traj="2">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_2_front.jpg" aria-label="Trajectory 2, front view">
+                <source src="static/videos/traj_2_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_2_side.jpg" aria-label="Trajectory 2, side view">
+                <source src="static/videos/traj_2_side.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Side view</p>
+            </div>
+          </div>
+          <p class="clip-caption">Trajectory 2 <span class="speed-tag">3&times; speed</span></p>
+        </div>
+
+        <div class="clip" data-traj="3">
+          <div class="columns">
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_3_front.jpg" aria-label="Trajectory 3, front view">
+                <source src="static/videos/traj_3_front.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Front view</p>
+            </div>
+            <div class="column">
+              <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/traj_3_side.jpg" aria-label="Trajectory 3, side view">
+                <source src="static/videos/traj_3_side.mp4" type="video/mp4">
+              </video>
+              <p class="view-label">Side view</p>
+            </div>
+          </div>
+          <p class="clip-caption">Trajectory 3 <span class="speed-tag">3&times; speed</span></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 真机实验：每个任务一段视频 ========== -->
-  <!-- 视频命名为 real_1.mp4、real_2.mp4 … 放进 static/videos/；任务多就复制一个 column，少就删掉 -->
-  <section class="section">
+  <!-- ========== 长距离运送 ========== -->
+  <section class="section" id="delivery">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
+      <h2 class="title is-3 has-text-centered">Long-Horizon Delivery</h2>
+      <p class="section-intro">
+        Delivering a loaded cart across the lab over long and short routes.
+      </p>
       <div class="columns is-multiline experiment-grid">
         <div class="column is-half">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 1">
-            <source src="static/videos/real_1.mp4" type="video/mp4">
+          <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_long_1.jpg" aria-label="Long-distance delivery 1">
+            <source src="static/videos/delivery_long_1.mp4" type="video/mp4">
           </video>
-          <!-- TODO: 任务名称/说明 -->
-          <p class="experiment-caption">Task 1: TASK_DESCRIPTION</p>
+          <p class="experiment-caption">Long route 1 <span class="speed-tag">4&times; speed</span></p>
         </div>
         <div class="column is-half">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 2">
-            <source src="static/videos/real_2.mp4" type="video/mp4">
+          <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_long_2.jpg" aria-label="Long-distance delivery 2">
+            <source src="static/videos/delivery_long_2.mp4" type="video/mp4">
           </video>
-          <p class="experiment-caption">Task 2: TASK_DESCRIPTION</p>
+          <p class="experiment-caption">Long route 2 <span class="speed-tag">4&times; speed</span></p>
         </div>
-        <div class="column is-half">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 3">
-            <source src="static/videos/real_3.mp4" type="video/mp4">
+        <div class="column is-half is-offset-one-quarter">
+          <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_short.jpg" aria-label="Short-distance delivery">
+            <source src="static/videos/delivery_short.mp4" type="video/mp4">
           </video>
-          <p class="experiment-caption">Task 3: TASK_DESCRIPTION</p>
-        </div>
-        <div class="column is-half">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 4">
-            <source src="static/videos/real_4.mp4" type="video/mp4">
-          </video>
-          <p class="experiment-caption">Task 4: TASK_DESCRIPTION</p>
+          <p class="experiment-caption">Short route <span class="speed-tag">3&times; speed</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 定量结果 / 对比 ========== -->
-  <!-- 结果图（表格截图或柱状图）命名为 results.png 放进 static/images/ -->
-  <section class="section hero is-light">
+  <!-- ========== 方法 ========== -->
+  <!-- TODO: 系统框架图（论文图 3-1）画好后，可以命名为 method_overview.jpg 替换左边的渲染图 -->
+  <section class="section hero is-light" id="method">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Results</h2>
-      <figure class="paper-figure">
-        <img src="static/images/results.png" alt="Quantitative results">
-      </figure>
-      <div class="content has-text-justified">
-        <!-- TODO: 一两句话总结结果，比如成功率比基线高多少 -->
-        <p>
-          SUMMARIZE_THE_KEY_RESULTS_HERE.
-        </p>
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div class="columns is-vcentered">
+        <div class="column is-4">
+          <figure class="paper-figure render-figure">
+            <img src="static/images/render_side34.jpg" alt="Unitree G1 holding the cart handle in simulation" loading="lazy">
+          </figure>
+        </div>
+        <div class="column is-8">
+          <div class="content method-text">
+            <p>
+              ForPC is a two-level controller. A frozen HOMIE locomotion policy walks the robot, and a high-level
+              push-cart policy running at 50&nbsp;Hz corrects its velocity commands, offsets the 15 upper-body joint
+              targets, and adds bounded residuals to the 12 leg joints.
+            </p>
+            <ul>
+              <li>
+                <strong>Hand&ndash;cart interaction model.</strong>
+                Each hand holds the handle through a four-joint chain with load-dependent elasto-plastic friction along
+                the tube, so grip slip and interaction forces are physically meaningful in simulation. Cart mass,
+                rolling resistance, caster friction, yaw damping and impacts are randomized.
+              </li>
+              <li>
+                <strong>Force-aware action and reward.</strong>
+                With both hands on the handle, upper-body joint offsets act as impedance-style regulators of the
+                interaction force, and the reward terms are derived from the contact mechanics.
+              </li>
+              <li>
+                <strong>Teacher&ndash;student training.</strong>
+                A teacher reads privileged mechanics through a 20-D latent bottleneck, regularized so that it keeps only
+                what a student can recover from deployable history. The deployed student needs no force sensors and
+                no privileged information.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ========== 完整视频（上传后取消注释） ==========
+  <section class="section" id="video">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Video</h2>
+      <div class="publication-video">
+        YouTube：<iframe src="https://www.youtube.com/embed/YOUTUBE_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        B 站：<iframe src="https://player.bilibili.com/player.html?bvid=BV_ID&autoplay=0" frameborder="0" allowfullscreen></iframe>
+        （两个 iframe 留一个）
+      </div>
+    </div>
+  </section>
+  -->
 
   <!-- ========== BibTeX ========== -->
   <section class="section" id="BibTeX">
@@ -266,11 +558,11 @@
         </button>
       </div>
       <!-- TODO: 换成论文的 BibTeX -->
-      <pre id="bibtex-code"><code>@inproceedings{forpc2026,
-  title     = {Paper Title Goes Here},
-  author    = {First Author and Second Author and Third Author and Last Author},
-  booktitle = {Venue},
-  year      = {2026}
+      <pre id="bibtex-code"><code>@article{forpc2026,
+  title   = {Paper Title Goes Here},
+  author  = {First Author and Second Author and Third Author and Last Author},
+  journal = {Venue},
+  year    = {2026}
 }</code></pre>
     </div>
   </section>

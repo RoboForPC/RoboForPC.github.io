@@ -6,29 +6,55 @@
 
 ## 改文字
 
-打开 `index.html`，搜索 `TODO`，每一处注释都写了要填什么：标题、作者、单位、会议、按钮链接、摘要、方法、结果、BibTeX。
+打开 `index.html`，搜索 `TODO`，每一处注释都写了要填什么：标题、作者、单位、期刊、按钮链接、摘要、BibTeX。
 
-## 放图片和视频
+## 页面结构
 
-按下面的文件名放进对应文件夹即可，不用改代码。文件还没放进来时，页面上会显示一个写着文件路径的虚线占位框。
+| 部分 | 内容 |
+|---|---|
+| 首屏视频 | 长路径连续任务，4 倍速 |
+| Velocity Command Tracking | vx / vy / ωz 三个标签页；按钮切换负载和方向；每个工况两个视角并排 |
+| Trajectory Following | 三条轨迹，正面 + 侧面 |
+| Long-Horizon Delivery | 两条长路径、一条短路径 |
+| Method | 方法简介 + 仿真渲染图 |
 
-| 文件 | 内容 | 建议 |
+## 视频文件
+
+视频在 `static/videos/`，封面帧在 `static/images/posters/`（同名 `.jpg`）。命名规则：
+
+| 文件 | 原始视频（`D:\Video_CJME`） | 倍速 |
 |---|---|---|
-| `static/videos/teaser.mp4` | 首屏视频 | 10~30 秒，静音循环，< 10MB |
-| `static/videos/real_1.mp4` … `real_4.mp4` | 真机实验，每个任务一段 | 每段 < 10MB |
-| `static/images/method_overview.png` | 方法框图 | 宽 2000px 左右 |
-| `static/images/results.png` | 结果图/表 | 宽 2000px 左右 |
-| `static/images/social_preview.png` | 链接分享卡片图 | 1200×630 |
+| `teaser.mp4` | `长路径连续任务` | 4× |
+| `vx_front.mp4` / `vx_side.mp4` | `soomth_ground_vx/0.3-vx`、`0.3-vx-side` | 2× |
+| `vy_<0kg\|12kg>_<left\|right>_<front\|top>.mp4` | `soomth_ground_vy/*`（`upper` = 高机位，对应 `top`） | 2× |
+| `wz_<0kg\|12kg\|25kg>_<front\|top>.mp4` | `soomth_ground_wz/*` | 2× |
+| `traj_<1\|2\|3>_<front\|side>.mp4` | `tragectory/*`、`tragectory_side/*` | 3× |
+| `delivery_long_1/2.mp4`、`delivery_short.mp4` | `长路径运送1/2`、`短路径运送1` | 4× / 3× |
 
-完整的长视频请上传到 YouTube 或 B 站，然后按 `index.html` 里 Video 部分的注释嵌入，不要直接放进仓库。
+视频文件还没放进来时，页面上会显示一个写着文件路径的虚线占位框。
 
-压缩视频（需要 ffmpeg）：
+压缩命令（宽 960、去掉声音、2 倍速）：
 
 ```bash
-ffmpeg -i input.mp4 -vcodec libx264 -crf 28 -preset slow -an -vf "scale=1280:-2" output.mp4
+ffmpeg -i input.mp4 -an -vf "setpts=PTS/2,fps=30,scale=960:-2" -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -movflags +faststart output.mp4
 ```
 
-`-an` 去掉声音，`scale=1280:-2` 缩到 720p 宽度。
+封面帧：
+
+```bash
+ffmpeg -i output.mp4 -frames:v 1 -q:v 4 poster.jpg
+```
+
+## 图片
+
+| 文件 | 来源（`E:\CJME_Push_car\output\paper_figures`） |
+|---|---|
+| `timelapse_vx.jpg` | `real_timelapse/straight_vx_0p3_path.png` |
+| `timelapse_vy.jpg` | `real_timelapse/lateral_vy_12p5kg_4poses_path.png` |
+| `timelapse_wz.jpg` | `real_timelapse/turning_wz_25kg_path_handle.png` |
+| `timelapse_wz_grid.jpg` | `real_timelapse/turning_wz_load_grid.png` |
+| `render_side34.jpg` | `side34.png` |
+| `social_preview.jpg` | 首屏视频截图，链接分享卡片用（1200×630） |
 
 ## 本地预览
 

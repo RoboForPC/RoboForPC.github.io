@@ -54,35 +54,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Video carousel autoplay when in view
-function setupVideoCarouselAutoplay() {
-    const carouselVideos = document.querySelectorAll('.results-carousel video');
-    
-    if (carouselVideos.length === 0) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                // Video is in view, play it
-                video.play().catch(e => {
-                    // Autoplay failed, probably due to browser policy
-                    console.log('Autoplay prevented:', e);
-                });
-            } else {
-                // Video is out of view, pause it
-                video.pause();
-            }
-        });
-    }, {
-        threshold: 0.5 // Trigger when 50% of the video is visible
-    });
-    
-    carouselVideos.forEach(video => {
-        observer.observe(video);
-    });
-}
-
 // 素材文件还没放进来时，在原位置显示一个写明文件路径的占位框；
 // 文件放进去后自动正常显示，不用改 HTML
 function showPlaceholder(media, path) {
@@ -124,18 +95,82 @@ function setupMissingMediaPlaceholders() {
     });
 }
 
-// 脚本是 defer 加载的，执行时页面已解析完
-setupMissingMediaPlaceholders();
+// class="managed" 的视频只在"没被隐藏且滚动到屏幕里"时播放，其余暂停，
+// 这样页面上几十段视频不会同时下载和解码
+const managedInView = new WeakMap();
 
-if (window.bulmaCarousel) {
-    bulmaCarousel.attach('.carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        loop: true,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
+function syncManagedVideo(video) {
+    const shown = video.offsetParent !== null;
+    if (shown && managedInView.get(video)) {
+        video.play().catch(() => {});
+    } else {
+        video.pause();
+    }
+}
+
+function syncAllManagedVideos() {
+    document.querySelectorAll('video.managed').forEach(syncManagedVideo);
+}
+
+function setupManagedVideos() {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            managedInView.set(entry.target, entry.isIntersecting);
+            syncManagedVideo(entry.target);
+        });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('video.managed').forEach(video => observer.observe(video));
+}
+
+// 速度跟踪部分的 vx / vy / ωz 标签页
+function setupCommandTabs() {
+    document.querySelectorAll('.command-tabs').forEach(tabs => {
+        const items = tabs.querySelectorAll('li[data-target]');
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                items.forEach(other => {
+                    other.classList.toggle('is-active', other === item);
+                    document.getElementById(other.dataset.target).hidden = other !== item;
+                });
+                syncAllManagedVideos();
+            });
+        });
     });
 }
 
-setupVideoCarouselAutoplay();
+// 选项按钮（负载、方向、轨迹编号）：显示 data-* 属性和所有已选选项都匹配的那一组视频
+function setupClipSwitchers() {
+    document.querySelectorAll('.clip-switcher').forEach(switcher => {
+        const groups = switcher.querySelectorAll('.option-group');
+
+        const update = () => {
+            const selected = {};
+            groups.forEach(group => {
+                selected[group.dataset.option] = group.querySelector('.option-btn.is-active').dataset.value;
+            });
+            switcher.querySelectorAll('.clip').forEach(clip => {
+                clip.hidden = !Object.keys(selected).every(key => clip.dataset[key] === selected[key]);
+            });
+            syncAllManagedVideos();
+        };
+
+        groups.forEach(group => {
+            const buttons = group.querySelectorAll('.option-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(other => other.classList.toggle('is-active', other === button));
+                    update();
+                });
+            });
+        });
+
+        update();
+    });
+}
+
+// 脚本是 defer 加载的，执行时页面已解析完
+setupMissingMediaPlaceholders();
+setupCommandTabs();
+setupClipSwitchers();
+setupManagedVideos();
