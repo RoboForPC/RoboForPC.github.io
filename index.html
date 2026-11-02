@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- TODO: 论文标题（浏览器标签页上显示的名字） -->
+  <title>ForPC: Paper Title Goes Here</title>
+
+  <!-- 搜索引擎 / 社交平台分享时显示的信息 -->
+  <!-- TODO: 标题、一句话简介（150 字符左右）、关键词、作者 -->
+  <meta name="title" content="ForPC: Paper Title Goes Here">
+  <meta name="description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
+  <meta name="keywords" content="robotics, robot learning, KEYWORD1, KEYWORD2">
+  <meta name="author" content="FIRST_AUTHOR, SECOND_AUTHOR">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="RoboForPC">
+  <meta property="og:title" content="ForPC: Paper Title Goes Here">
+  <meta property="og:description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
+  <meta property="og:url" content="https://roboforpc.github.io/">
+  <!-- TODO: 做一张 1200x630 的预览图放到 static/images/social_preview.png（链接发出去时显示的卡片图） -->
+  <meta property="og:image" content="https://roboforpc.github.io/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ForPC: Paper Title Goes Here">
+  <meta name="twitter:description" content="ONE_SENTENCE_SUMMARY_OF_THE_PAPER">
+  <meta name="twitter:image" content="https://roboforpc.github.io/static/images/social_preview.png">
+
+  <!-- Google Scholar 收录用。TODO: 每位作者一行 citation_author，格式 "姓, 名" -->
+  <meta name="citation_title" content="Paper Title Goes Here">
+  <meta name="citation_author" content="LAST_NAME, FIRST_NAME">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="VENUE_NAME">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/ARXIV_ID">
+
+  <meta name="theme-color" content="#2563eb">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- 非关键样式异步加载。Google 字体在国内经常打不开，所以也异步，不让它卡住整页 -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+
+  <!-- ========== 标题 / 作者 / 按钮 ========== -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: 论文标题 -->
+            <h1 class="title is-1 publication-title">ForPC: Paper Title Goes Here</h1>
+
+            <!-- TODO: 作者。<sup> 里的数字对应下面的单位编号；* 共同一作，&dagger; 通讯作者，不需要就删掉 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="FIRST_AUTHOR_HOMEPAGE" target="_blank">First Author</a><sup>1*</sup>,</span>
+              <span class="author-block"><a href="SECOND_AUTHOR_HOMEPAGE" target="_blank">Second Author</a><sup>1*</sup>,</span>
+              <span class="author-block"><a href="THIRD_AUTHOR_HOMEPAGE" target="_blank">Third Author</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="LAST_AUTHOR_HOMEPAGE" target="_blank">Last Author</a><sup>1&dagger;</sup></span>
+            </div>
+
+            <!-- TODO: 单位 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Institution One</span>
+              <span class="author-block"><sup>2</sup>Institution Two</span>
+              <span class="eql-cntrb"><br><sup>*</sup>Equal contribution &nbsp;&nbsp; <sup>&dagger;</sup>Corresponding author</span>
+            </div>
+
+            <!-- TODO: 会议/期刊和年份；还没中稿可以先写 "Under Review" -->
+            <div class="publication-venue">Venue 2026</div>
+
+            <!-- TODO: 按钮链接。还没有的链接（比如代码还没开源）可以把整个 link-block 删掉 -->
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/ARXIV_ID" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/ARXIV_ID" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#video" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/RoboForPC/CODE_REPO" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 首屏视频：最能体现机器人效果的一段，10~30 秒，自动循环播放、静音 ========== -->
+  <!-- 把视频命名为 teaser.mp4 放进 static/videos/ 即可，不用改代码 -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser" autoplay muted loop playsinline preload="metadata" aria-label="Teaser video">
+          <source src="static/videos/teaser.mp4" type="video/mp4">
+        </video>
+        <!-- TODO: 一句话说清楚论文做了什么 -->
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">ForPC</span> ONE_SENTENCE_SUMMARY_OF_WHAT_THE_ROBOT_CAN_DO.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 摘要 ========== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <!-- TODO: 论文摘要，可以分成几段 <p> -->
+            <p>
+              PASTE_THE_ABSTRACT_HERE.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 完整视频：放 YouTube 或 B 站（大视频不要直接放进仓库） ========== -->
+  <section class="hero is-small" id="video">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Video</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <!-- TODO: 视频上传后，删掉下面这个占位框，再取消其中一个 iframe 的注释并填上视频 ID -->
+            <div class="media-placeholder">
+              <i class="fab fa-youtube fa-2x"></i>
+              <span>Full video (YouTube / Bilibili)</span>
+            </div>
+            <!-- YouTube：把 YOUTUBE_ID 换成视频链接 watch?v= 后面那串
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/YOUTUBE_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            -->
+            <!-- B 站：把 BV_ID 换成 BV 号
+            <div class="publication-video">
+              <iframe src="https://player.bilibili.com/player.html?bvid=BV_ID&autoplay=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 方法 ========== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <!-- 方法框图命名为 method_overview.png 放进 static/images/ -->
+      <figure class="paper-figure">
+        <img src="static/images/method_overview.png" alt="Method overview">
+      </figure>
+      <div class="content has-text-justified">
+        <!-- TODO: 方法简介，2~3 段，讲清楚输入、核心模块、输出 -->
+        <p>
+          DESCRIBE_THE_METHOD_HERE.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 真机实验：每个任务一段视频 ========== -->
+  <!-- 视频命名为 real_1.mp4、real_2.mp4 … 放进 static/videos/；任务多就复制一个 column，少就删掉 -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
+      <div class="columns is-multiline experiment-grid">
+        <div class="column is-half">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 1">
+            <source src="static/videos/real_1.mp4" type="video/mp4">
+          </video>
+          <!-- TODO: 任务名称/说明 -->
+          <p class="experiment-caption">Task 1: TASK_DESCRIPTION</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 2">
+            <source src="static/videos/real_2.mp4" type="video/mp4">
+          </video>
+          <p class="experiment-caption">Task 2: TASK_DESCRIPTION</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 3">
+            <source src="static/videos/real_3.mp4" type="video/mp4">
+          </video>
+          <p class="experiment-caption">Task 3: TASK_DESCRIPTION</p>
+        </div>
+        <div class="column is-half">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Task 4">
+            <source src="static/videos/real_4.mp4" type="video/mp4">
+          </video>
+          <p class="experiment-caption">Task 4: TASK_DESCRIPTION</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 定量结果 / 对比 ========== -->
+  <!-- 结果图（表格截图或柱状图）命名为 results.png 放进 static/images/ -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <figure class="paper-figure">
+        <img src="static/images/results.png" alt="Quantitative results">
+      </figure>
+      <div class="content has-text-justified">
+        <!-- TODO: 一两句话总结结果，比如成功率比基线高多少 -->
+        <p>
+          SUMMARIZE_THE_KEY_RESULTS_HERE.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BibTeX ========== -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <!-- TODO: 换成论文的 BibTeX -->
+      <pre id="bibtex-code"><code>@inproceedings{forpc2026,
+  title     = {Paper Title Goes Here},
+  author    = {First Author and Second Author and Third Author and Last Author},
+  booktitle = {Venue},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <!-- 模板许可证（CC BY-SA 4.0）要求保留这段来源说明 -->
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
