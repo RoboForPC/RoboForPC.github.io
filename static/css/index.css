@@ -1008,3 +1008,34 @@ a:focus {
     gap: 0.6rem 1.25rem;
   }
 }
+
+/* 摘要下方的框架图 */
+.framework {
+  margin-top: 3rem;
+  padding: 0 1.5rem;
+}
+
+.framework-figure {
+  margin: 0;
+}
+
+.framework-figure img {
+  width: 100%;
+  display: block;
+  padding: 1rem;
+  background: #fff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  cursor: zoom-in;
+}
+
+.framework-figure figcaption {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  text-align: left;
+  line-height: 1.65;
+}
+
+.framework-figure figcaption strong {
+  color: var(--text-primary);
+}

@@ -145,23 +145,42 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <!-- TODO: 这段是根据 docs/paper_method_stage2_teacher_student.md 写的草稿，请换成论文正式摘要 -->
+            <!-- TODO: 这段是按框架图（Figure 3）写的草稿，请换成论文正式摘要 -->
             <p>
               When a humanoid robot pushes a cart, everything it does to the cart passes through its hands.
-              Whether the cart moves, whether the hands slip on the handle, and how well a velocity command is tracked
-              all depend on the interaction force, which in turn depends on grip friction, cart mass, rolling resistance
-              and external disturbances&mdash;none of which can be measured on the real robot.
-              We present ForPC, a hierarchical controller in which a high-level push-cart policy drives a frozen
-              locomotion policy by correcting its velocity commands, offsetting upper-body joint targets and adding
-              bounded leg residuals. We model the hand&ndash;handle contact with load-dependent elasto-plastic friction,
-              derive force-aware rewards from this contact model, and train the policy with a teacher&ndash;student scheme
-              whose latent context is restricted to what can be recovered from deployable history.
+              Whether the cart moves and how well a velocity command is tracked depend on the hand&ndash;cart
+              interaction force, which in turn depends on cart mass, friction and external disturbances&mdash;none
+              of which can be measured on the real robot.
+              We present ForPC, a force-aware whole-body residual controller. A pre-trained locomotion policy is kept
+              frozen, and a learned policy outputs arm actions, velocity commands and leg residuals on top of it.
+              Through teacher&ndash;student training, the student learns to estimate the interaction force and infer
+              the robot&ndash;cart state from its observation history alone, guided by a teacher that sees ground-truth
+              contact forces and privileged state.
               Deployed on a Unitree G1 without force sensors, the policy tracks forward, lateral and turning commands
               with payloads of up to 25&nbsp;kg and completes long-horizon delivery tasks.
             </p>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 框架图（论文 Figure 3，来自 fig03_framework.pdf）。点击图片打开原图 -->
+    <div class="container is-max-widescreen framework" id="method">
+      <figure class="paper-figure framework-figure">
+        <a href="static/images/framework.png" target="_blank" title="Open full-size figure">
+          <img src="static/images/framework.png" alt="ForPC framework: locomotion prior pre-training, force estimation and force-aware state inference, and force-aware whole-body residual control">
+        </a>
+        <figcaption>
+          <strong>Framework.</strong>
+          (a) A locomotion prior is pre-trained from bounded initial poses under external wrench disturbances.
+          (b) The student encodes its observation history into state and force latents, decoded into velocity,
+          acceleration and force estimates, and is aligned by KL divergence with a teacher that encodes ground-truth
+          contact forces and privileged state; both feed a shared task policy.
+          (c) The student policy outputs arm actions, velocity commands and leg residuals for the frozen locomotion
+          policy, trained with velocity-tracking, cart-smoothness and internal-force rewards under dynamics
+          randomization and observation noise.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -370,8 +389,8 @@
         <div class="columns is-vcentered timelapse-pair">
           <div class="column is-5">
             <figure class="paper-figure timelapse">
-              <img src="static/images/timelapse_wz.jpg" alt="High-angle timelapse of turning with a 25 kg payload" loading="lazy">
-              <figcaption>Turning with a 25 kg payload; the arrow traces the handle.</figcaption>
+              <img src="static/images/timelapse_wz.jpg" alt="High-angle timelapse of turning with an empty cart" loading="lazy">
+              <figcaption>Turning with an empty cart; the orange loop traces the cart path.</figcaption>
             </figure>
           </div>
           <div class="column is-7">
@@ -486,49 +505,6 @@
             <source src="static/videos/delivery_short.mp4" type="video/mp4">
           </video>
           <p class="experiment-caption">Short route <span class="speed-tag">3&times; speed</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 方法 ========== -->
-  <!-- TODO: 系统框架图（论文图 3-1）画好后，可以命名为 method_overview.jpg 替换左边的渲染图 -->
-  <section class="section hero is-light" id="method">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Method</h2>
-      <div class="columns is-vcentered">
-        <div class="column is-4">
-          <figure class="paper-figure render-figure">
-            <img src="static/images/render_side34.jpg" alt="Unitree G1 holding the cart handle in simulation" loading="lazy">
-          </figure>
-        </div>
-        <div class="column is-8">
-          <div class="content method-text">
-            <p>
-              ForPC is a two-level controller. A frozen HOMIE locomotion policy walks the robot, and a high-level
-              push-cart policy running at 50&nbsp;Hz corrects its velocity commands, offsets the 15 upper-body joint
-              targets, and adds bounded residuals to the 12 leg joints.
-            </p>
-            <ul>
-              <li>
-                <strong>Hand&ndash;cart interaction model.</strong>
-                Each hand holds the handle through a four-joint chain with load-dependent elasto-plastic friction along
-                the tube, so grip slip and interaction forces are physically meaningful in simulation. Cart mass,
-                rolling resistance, caster friction, yaw damping and impacts are randomized.
-              </li>
-              <li>
-                <strong>Force-aware action and reward.</strong>
-                With both hands on the handle, upper-body joint offsets act as impedance-style regulators of the
-                interaction force, and the reward terms are derived from the contact mechanics.
-              </li>
-              <li>
-                <strong>Teacher&ndash;student training.</strong>
-                A teacher reads privileged mechanics through a 20-D latent bottleneck, regularized so that it keeps only
-                what a student can recover from deployable history. The deployed student needs no force sensors and
-                no privileged information.
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

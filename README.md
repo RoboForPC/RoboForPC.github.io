@@ -16,7 +16,7 @@
 | Velocity Command Tracking | vx / vy / ωz 三个标签页；按钮切换负载和方向；每个工况两个视角并排 |
 | Trajectory Following | 三条轨迹，正面 + 侧面 |
 | Long-Horizon Delivery | 两条长路径、一条短路径 |
-| Method | 方法简介 + 仿真渲染图 |
+| 摘要 + 框架图 | 论文 Figure 3（`static/images/framework.png`，点击可看原图） |
 
 ## 视频文件
 
@@ -51,9 +51,8 @@ ffmpeg -i output.mp4 -frames:v 1 -q:v 4 poster.jpg
 |---|---|
 | `timelapse_vx.jpg` | `real_timelapse/straight_vx_0p3_path.png` |
 | `timelapse_vy.jpg` | `real_timelapse/lateral_vy_12p5kg_4poses_path.png` |
-| `timelapse_wz.jpg` | `real_timelapse/turning_wz_25kg_path_handle.png` |
+| `timelapse_wz.jpg` | `real_timelapse/turning_wz_0kg_path_circlefit.png` |
 | `timelapse_wz_grid.jpg` | `real_timelapse/turning_wz_load_grid.png` |
-| `render_side34.jpg` | `side34.png` |
 | `social_preview.jpg` | 首屏视频截图，链接分享卡片用（1200×630） |
 
 ## 本地预览
