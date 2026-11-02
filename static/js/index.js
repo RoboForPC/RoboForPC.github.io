@@ -54,8 +54,45 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// 素材文件还没放进来时，在原位置显示一个写明文件路径的占位框；
-// 文件放进去后自动正常显示，不用改 HTML
+// 本地预览（localhost）时，素材文件还没放进来就在原位置显示一个写明文件路径的占位框，
+// 文件放进去后自动正常显示，不用改 HTML。
+// 线上网站不显示占位框：加载失败（网络中断、刚部署完等）时保留封面图，隔几秒自动重试
+const IS_LOCAL_PREVIEW = ['localhost', '127.0.0.1', ''].includes(location.hostname);
+const MAX_MEDIA_RETRIES = 2;
+
+// 加查询参数换一个缓存键，避开浏览器缓存里那次失败的响应
+function retryUrl(path, attempt) {
+    return path + (path.includes('?') ? '&' : '?') + 'retry=' + attempt;
+}
+
+function handleVideoError(video, source, path) {
+    if (IS_LOCAL_PREVIEW) {
+        showPlaceholder(video, path);
+        return;
+    }
+    const attempt = Number(video.dataset.retries || 0) + 1;
+    if (attempt > MAX_MEDIA_RETRIES) return;
+    video.dataset.retries = attempt;
+    setTimeout(() => {
+        source.src = retryUrl(path, attempt);
+        video.load();
+        if (video.classList.contains('managed')) syncManagedVideo(video);
+    }, 2000 * attempt);
+}
+
+function handleImageError(img, path) {
+    if (IS_LOCAL_PREVIEW) {
+        showPlaceholder(img, path);
+        return;
+    }
+    const attempt = Number(img.dataset.retries || 0) + 1;
+    if (attempt > MAX_MEDIA_RETRIES) return;
+    img.dataset.retries = attempt;
+    setTimeout(() => {
+        img.src = retryUrl(path, attempt);
+    }, 2000 * attempt);
+}
+
 function showPlaceholder(media, path) {
     if (media.dataset.placeholderShown) return;
     media.dataset.placeholderShown = 'true';
@@ -78,19 +115,17 @@ function setupMissingMediaPlaceholders() {
         if (sources.length === 0) return;
         const last = sources[sources.length - 1];
         const path = last.getAttribute('src');
+        last.addEventListener('error', () => handleVideoError(video, last, path));
         if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-            showPlaceholder(video, path);
-        } else {
-            last.addEventListener('error', () => showPlaceholder(video, path));
+            handleVideoError(video, last, path);
         }
     });
 
     document.querySelectorAll('img').forEach(img => {
         const path = img.getAttribute('src');
+        img.addEventListener('error', () => handleImageError(img, path));
         if (img.complete && img.naturalWidth === 0) {
-            showPlaceholder(img, path);
-        } else {
-            img.addEventListener('error', () => showPlaceholder(img, path));
+            handleImageError(img, path);
         }
     });
 }
