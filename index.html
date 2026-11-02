@@ -4,32 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- TODO: 论文标题（浏览器标签页上显示的名字） -->
-  <title>ForPC: Paper Title Goes Here</title>
+  <!-- 论文标题（浏览器标签页上显示的名字） -->
+  <title>ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing</title>
 
   <!-- 搜索引擎 / 社交平台分享时显示的信息 -->
-  <!-- TODO: 标题、作者 -->
-  <meta name="title" content="ForPC: Paper Title Goes Here">
-  <meta name="description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
-  <meta name="keywords" content="humanoid robot, cart pushing, loco-manipulation, reinforcement learning, teacher-student, Unitree G1">
+  <!-- TODO: 作者 -->
+  <meta name="title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
+  <meta name="description" content="Force-aware whole-body control for humanoid cart pushing: trained solely in simulation, transferred to a Unitree G1 that pushes carts under different payloads without fine-tuning or force sensors.">
+  <meta name="keywords" content="humanoid robot, cart pushing, whole-body control, dynamic coupling, interaction-force estimation, residual reinforcement learning">
   <meta name="author" content="FIRST_AUTHOR, SECOND_AUTHOR">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="RoboForPC">
-  <meta property="og:title" content="ForPC: Paper Title Goes Here">
-  <meta property="og:description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
+  <meta property="og:title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
+  <meta property="og:description" content="Force-aware whole-body control for humanoid cart pushing: trained solely in simulation, transferred to a Unitree G1 that pushes carts under different payloads without fine-tuning or force sensors.">
   <meta property="og:url" content="https://roboforpc.github.io/">
   <meta property="og:image" content="https://roboforpc.github.io/static/images/social_preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ForPC: Paper Title Goes Here">
-  <meta name="twitter:description" content="Force-aware humanoid cart pushing on a Unitree G1: tracking forward, lateral and turning commands with payloads up to 25 kg, without force sensors.">
+  <meta name="twitter:title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
+  <meta name="twitter:description" content="Force-aware whole-body control for humanoid cart pushing: trained solely in simulation, transferred to a Unitree G1 that pushes carts under different payloads without fine-tuning or force sensors.">
   <meta name="twitter:image" content="https://roboforpc.github.io/static/images/social_preview.jpg">
 
   <!-- Google Scholar 收录用。TODO: 每位作者一行 citation_author，格式 "姓, 名" -->
-  <meta name="citation_title" content="Paper Title Goes Here">
+  <meta name="citation_title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
   <meta name="citation_author" content="LAST_NAME, FIRST_NAME">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_journal_title" content="VENUE_NAME">
@@ -66,8 +66,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: 论文标题 -->
-            <h1 class="title is-1 publication-title">ForPC: Paper Title Goes Here</h1>
+            <!-- 论文标题 -->
+            <h1 class="title is-1 publication-title">ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing</h1>
 
             <!-- TODO: 作者。<sup> 里的数字对应下面的单位编号；* 共同一作，&dagger; 通讯作者，不需要就删掉 -->
             <div class="is-size-5 publication-authors">
@@ -130,8 +130,9 @@
           <source src="static/videos/teaser.mp4" type="video/mp4">
         </video>
         <h2 class="subtitle has-text-centered">
-          A Unitree G1 humanoid pushes a loaded cart through a long-horizon continuous task,
-          using only its own joint sensing to feel and regulate the hand&ndash;cart interaction force.
+          <strong>One policy, changing payloads.</strong>
+          A Unitree G1 completes a long-horizon continuous transport task while the payload on the cart changes
+          along the way &mdash; all with the same ForPC policy, without retuning or switching controllers.
           <span class="speed-tag">4&times; speed</span>
         </h2>
       </div>
@@ -145,19 +146,30 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <!-- TODO: 这段是按框架图（Figure 3）写的草稿，请换成论文正式摘要 -->
+            <!-- 论文摘要（来自 Desktop\CJME\main.tex），论文摘要改了这里也要跟着改 -->
             <p>
-              When a humanoid robot pushes a cart, everything it does to the cart passes through its hands.
-              Whether the cart moves and how well a velocity command is tracked depend on the hand&ndash;cart
-              interaction force, which in turn depends on cart mass, friction and external disturbances&mdash;none
-              of which can be measured on the real robot.
-              We present ForPC, a force-aware whole-body residual controller. A pre-trained locomotion policy is kept
-              frozen, and a learned policy outputs arm actions, velocity commands and leg residuals on top of it.
-              Through teacher&ndash;student training, the student learns to estimate the interaction force and infer
-              the robot&ndash;cart state from its observation history alone, guided by a teacher that sees ground-truth
-              contact forces and privileged state.
-              Deployed on a Unitree G1 without force sensors, the policy tracks forward, lateral and turning commands
-              with payloads of up to 25&nbsp;kg and completes long-horizon delivery tasks.
+              Humanoid robots are expected to take over strenuous material handling in manufacturing, logistics, and
+              healthcare, where operating existing wheeled carts would let them move heavy loads without modifying the
+              workplace. However, humanoid cart pushing remains challenging because the bimanual grasp closes a
+              force-coupled loop in which the contact wrenches that drive the cart also disturb the robot's balance,
+              and payload changes alter the coupled dynamics.
+            </p>
+            <p>
+              We propose ForPC, a force-aware whole-body control framework that regulates cart velocity through
+              two-stage reinforcement learning. A locomotion prior is first trained under varied hand loads and
+              upper-body postures to provide balance support. A force latent and a state latent are then inferred from
+              onboard observations, without external force sensors, and fed to a residual policy that coordinates
+              bounded arm, waist, and leg adjustments with base-velocity commands. Multi-objective rewards penalize
+              bimanual internal opposition, grasp slip, and actuator saturation, encouraging the policy to apply
+              contact force on demand without human demonstrations.
+            </p>
+            <p>
+              Trained solely in Isaac Sim, ForPC reduces cart-velocity RMSE by 25.7&ndash;72.8% relative to a
+              single-stage reinforcement learning baseline in Isaac Sim and MuJoCo, and reduces cross-track RMSE by
+              68.7&ndash;90.0% on multi-bend routes with payloads of 12.5&ndash;25&nbsp;kg. The policy also transfers to
+              a physical Unitree G1 without real-world training or fine-tuning, completing cart-pushing transport tasks
+              under different payloads without further adjustment. These results suggest that humanoid robots could
+              eventually replace humans for efficient material handling in daily life.
             </p>
           </div>
         </div>
@@ -482,25 +494,25 @@
 
   <!-- ========== 长距离运送 ========== -->
   <section class="section" id="delivery">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">Long-Horizon Delivery</h2>
       <p class="section-intro">
         Delivering a loaded cart across the lab over long and short routes.
       </p>
-      <div class="columns is-multiline experiment-grid">
-        <div class="column is-half">
+      <div class="columns experiment-grid">
+        <div class="column is-one-third">
           <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_long_1.jpg" aria-label="Long-distance delivery 1">
             <source src="static/videos/delivery_long_1.mp4" type="video/mp4">
           </video>
           <p class="experiment-caption">Long route 1 <span class="speed-tag">4&times; speed</span></p>
         </div>
-        <div class="column is-half">
+        <div class="column is-one-third">
           <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_long_2.jpg" aria-label="Long-distance delivery 2">
             <source src="static/videos/delivery_long_2.mp4" type="video/mp4">
           </video>
           <p class="experiment-caption">Long route 2 <span class="speed-tag">4&times; speed</span></p>
         </div>
-        <div class="column is-half is-offset-one-quarter">
+        <div class="column is-one-third">
           <video class="managed" muted loop playsinline preload="none" poster="static/images/posters/delivery_short.jpg" aria-label="Short-distance delivery">
             <source src="static/videos/delivery_short.mp4" type="video/mp4">
           </video>
@@ -535,7 +547,7 @@
       </div>
       <!-- TODO: 换成论文的 BibTeX -->
       <pre id="bibtex-code"><code>@article{forpc2026,
-  title   = {Paper Title Goes Here},
+  title   = {ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing},
   author  = {First Author and Second Author and Third Author and Last Author},
   journal = {Venue},
   year    = {2026}
