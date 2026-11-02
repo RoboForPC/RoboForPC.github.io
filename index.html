@@ -63,7 +63,7 @@
   <!-- ========== 标题 / 作者 / 按钮 ========== -->
   <section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- 论文标题 -->
@@ -124,7 +124,7 @@
 
   <!-- ========== 首屏视频：长路径连续任务 ========== -->
   <section class="hero teaser">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="hero-body">
         <video id="teaser" autoplay muted loop playsinline preload="auto" poster="static/images/posters/teaser.jpg" aria-label="Teaser video">
           <source src="static/videos/teaser.mp4" type="video/mp4">
@@ -141,9 +141,9 @@
 
   <!-- ========== 摘要 ========== -->
   <section class="section hero is-light">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+        <div class="column">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <!-- 论文摘要（来自 Desktop\CJME\main.tex），论文摘要改了这里也要跟着改 -->
@@ -199,7 +199,7 @@
   <!-- ========== 速度指令跟踪：vx / vy / ωz，每个工况两个视角 ========== -->
   <!-- 视频文件命名：<指令>_<负载>_<方向>_<视角>.mp4，比如 vy_12kg_left_top.mp4 -->
   <section class="section" id="tracking">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">Velocity Command Tracking</h2>
       <p class="section-intro">
         The policy tracks planar velocity commands &mdash; forward <i>v<sub>x</sub></i>, lateral <i>v<sub>y</sub></i>
@@ -418,7 +418,7 @@
 
   <!-- ========== 轨迹跟踪：三条轨迹，正面 + 侧面 ========== -->
   <section class="section hero is-light" id="trajectory">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">Trajectory Following</h2>
       <!-- TODO: 如果三条轨迹各有名字/形状（比如 S 形、绕行），把下面按钮和说明改成具体名称 -->
       <p class="section-intro">
@@ -492,8 +492,29 @@
     </div>
   </section>
 
+  <!-- ========== 接入导航的运送任务（论文 Figure 8，来自 fig08_navigation_transport.pdf）。点击图片打开原图 ========== -->
+  <section class="section" id="navigation">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 has-text-centered">Navigation-Integrated Transport</h2>
+      <p class="section-intro">
+        Connected to a navigation module, ForPC pushes the cart along planned routes across the lab and keeps
+        the same policy when the cargo is changed mid-task.
+      </p>
+      <figure class="paper-figure wide-figure">
+        <a href="static/images/navigation.jpg" target="_blank" title="Open full-size figure">
+          <img src="static/images/navigation.jpg" alt="Navigation map with two trajectories and snapshots of the robot at six waypoints" loading="lazy">
+        </a>
+        <figcaption>
+          Left: the two routes on the navigation map. The robot follows Trajectory 1 (red, waypoints 1&ndash;4),
+          the cargo is swapped at waypoint 4, and it continues along Trajectory 2 (green, waypoints 4&ndash;6).
+          Right: the robot at each numbered waypoint.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- ========== 长距离运送 ========== -->
-  <section class="section" id="delivery">
+  <section class="section hero is-light" id="delivery">
     <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">Long-Horizon Delivery</h2>
       <p class="section-intro">
@@ -524,7 +545,7 @@
 
   <!-- ========== 完整视频（上传后取消注释） ==========
   <section class="section" id="video">
-    <div class="container is-max-desktop">
+    <div class="container is-max-widescreen">
       <h2 class="title is-3 has-text-centered">Video</h2>
       <div class="publication-video">
         YouTube：<iframe src="https://www.youtube.com/embed/YOUTUBE_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -537,7 +558,7 @@
 
   <!-- ========== BibTeX ========== -->
   <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
+    <div class="container is-max-widescreen content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
         <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">

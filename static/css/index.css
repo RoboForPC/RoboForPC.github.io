@@ -823,7 +823,7 @@ a:focus {
 }
 
 .section-intro {
-  max-width: 720px;
+  max-width: 960px;
   margin: -0.5rem auto 2rem;
   text-align: center;
   color: var(--text-secondary);
@@ -1012,7 +1012,6 @@ a:focus {
 /* 摘要下方的框架图 */
 .framework {
   margin-top: 3rem;
-  padding: 0 1.5rem;
 }
 
 .framework-figure {
@@ -1030,12 +1029,29 @@ a:focus {
 }
 
 .framework-figure figcaption {
-  max-width: 900px;
-  margin: 1rem auto 0;
+  margin: 1rem 0 0;
   text-align: left;
   line-height: 1.65;
 }
 
 .framework-figure figcaption strong {
   color: var(--text-primary);
+}
+
+/* 导航运送大图 */
+.wide-figure {
+  margin: 0;
+}
+
+.wide-figure img {
+  width: 100%;
+  display: block;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  cursor: zoom-in;
+}
+
+.wide-figure figcaption {
+  margin-top: 1rem;
+  line-height: 1.65;
 }

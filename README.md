@@ -15,6 +15,7 @@
 | 首屏视频 | 长路径连续任务，4 倍速 |
 | Velocity Command Tracking | vx / vy / ωz 三个标签页；按钮切换负载和方向；每个工况两个视角并排 |
 | Trajectory Following | 三条轨迹，正面 + 侧面 |
+| Navigation-Integrated Transport | 论文 Figure 8（`static/images/navigation.jpg`，来自 `fig08_navigation_transport.pdf`） |
 | Long-Horizon Delivery | 两条长路径、一条短路径 |
 | 摘要 + 框架图 | 论文 Figure 3（`static/images/framework.png`，点击可看原图） |
 
@@ -53,6 +54,7 @@ ffmpeg -i output.mp4 -frames:v 1 -q:v 4 poster.jpg
 | `timelapse_vy.jpg` | `real_timelapse/lateral_vy_12p5kg_4poses_path.png` |
 | `timelapse_wz.jpg` | `real_timelapse/turning_wz_0kg_path_circlefit.png` |
 | `timelapse_wz_grid.jpg` | `real_timelapse/turning_wz_load_grid.png` |
+| `framework.png` / `navigation.jpg` | 论文 Figure 3 / Figure 8（`Desktop\CJME\img` 里的 PDF 转成图片） |
 | `social_preview.jpg` | 首屏视频截图，链接分享卡片用（1200×630） |
 
 ## 本地预览
