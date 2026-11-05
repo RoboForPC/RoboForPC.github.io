@@ -11,7 +11,7 @@
   <meta name="title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
   <meta name="description" content="Force-aware whole-body control for humanoid cart pushing: trained solely in simulation, transferred to a Unitree G1 that pushes carts under different payloads without fine-tuning or force sensors.">
   <meta name="keywords" content="humanoid robot, cart pushing, whole-body control, dynamic coupling, interaction-force estimation, residual reinforcement learning">
-  <meta name="author" content="Zhenyu Zou, Xing Liu, ShiChuang Wang, Cheng Cheng">
+  <meta name="author" content="ZhenYu Zou, Xing Liu, ShiChuang Wang, YunLong Dong, LiNan Deng, Feng Hua, Jun Wan, Cheng Cheng">
   <meta name="robots" content="index, follow">
 
   <meta property="og:type" content="article">
@@ -29,9 +29,13 @@
 
   <!-- Google Scholar 收录用。每位作者一行 citation_author，格式 "姓, 名" -->
   <meta name="citation_title" content="ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing">
-  <meta name="citation_author" content="Zou, Zhenyu">
+  <meta name="citation_author" content="Zou, ZhenYu">
   <meta name="citation_author" content="Liu, Xing">
   <meta name="citation_author" content="Wang, ShiChuang">
+  <meta name="citation_author" content="Dong, YunLong">
+  <meta name="citation_author" content="Deng, LiNan">
+  <meta name="citation_author" content="Hua, Feng">
+  <meta name="citation_author" content="Wan, Jun">
   <meta name="citation_author" content="Cheng, Cheng">
   <meta name="citation_author_institution" content="Huazhong University of Science and Technology">
   <meta name="citation_publication_date" content="2026">
@@ -63,46 +67,85 @@
 
   <main id="main-content">
 
-  <!-- ========== 标题 / 作者 / 按钮 ========== -->
-  <section class="hero">
+  <!-- ========== 首屏：四个搬运任务以 2×2 四视图同时播放 ========== -->
+  <section class="hero publication-hero" id="home" aria-labelledby="publication-title">
+    <div class="hero-background" aria-hidden="true">
+      <video class="hero-background-video" muted loop playsinline preload="auto" poster="static/images/posters/teaser.jpg">
+        <source src="static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <video class="hero-background-video" muted loop playsinline preload="auto" poster="static/images/posters/delivery_long_1.jpg">
+        <source src="static/videos/delivery_long_1.mp4" type="video/mp4">
+      </video>
+      <video class="hero-background-video" muted loop playsinline preload="auto" poster="static/images/posters/delivery_long_2.jpg">
+        <source src="static/videos/delivery_long_2.mp4" type="video/mp4">
+      </video>
+      <video class="hero-background-video" muted loop playsinline preload="auto" poster="static/images/posters/delivery_short.jpg">
+        <source src="static/videos/delivery_short.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero-body">
       <div class="container is-max-widescreen">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- 论文标题 -->
-            <h1 class="title is-1 publication-title">ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing</h1>
+            <h1 class="title is-1 publication-title" id="publication-title">
+              <span class="publication-acronym">ForPC</span>
+              <span class="publication-title-description">Force-Aware Whole-Body Control<br class="publication-title-break"> for Precise Humanoid Cart Pushing</span>
+            </h1>
 
-            <!-- 作者。&dagger; 为通讯作者；以后有个人主页可以把名字包成 <a href="..." target="_blank">名字</a> -->
+            <!-- 作者；以后有个人主页可以把名字包成 <a href="..." target="_blank">名字</a> -->
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Zhenyu Zou,</span>
+              <span class="author-block">ZhenYu Zou,</span>
               <span class="author-block">Xing Liu,</span>
               <span class="author-block">ShiChuang Wang,</span>
-              <span class="author-block">Cheng Cheng<sup>&dagger;</sup></span>
+              <span class="author-block">YunLong Dong,</span>
+              <span class="author-block">LiNan Deng,</span>
+              <span class="author-block">Feng Hua,</span>
+              <span class="author-block">Jun Wan</span>
+              <div class="corresponding-author">Cheng Cheng<sup aria-label="Corresponding author" title="Corresponding author">&dagger;</sup></div>
             </div>
 
             <!-- 单位 -->
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">Huazhong University of Science and Technology</span>
-              <span class="eql-cntrb"><br><sup>&dagger;</sup>Corresponding author</span>
+            <div class="is-size-5 publication-authors publication-affiliation">
+              <img class="affiliation-logo" src="static/images/hust-emblem.png" alt="HUST emblem" width="251" height="190">
+              <span>Huazhong University of Science and Technology</span>
             </div>
 
             <!-- TODO: 期刊名定了以后取消注释，比如 Chinese Journal of Mechanical Engineering, 2026
             <div class="publication-venue">VENUE_NAME 2026</div>
             -->
 
-            <!-- 链接按钮（Paper / arXiv / Code / Video）暂时都不放；以后需要可以参考
-                 https://github.com/eliahuhorwitz/Academic-project-page-template 里的 publication-links 写法加回来 -->
+            <nav class="hero-resources" aria-label="Project resources">
+              <a class="hero-resource hero-resource-paper" href="static/papers/main.pdf" download="main.pdf" aria-label="Download paper PDF">
+                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                <span>Paper</span>
+              </a>
+              <button class="hero-resource hero-resource-pending" type="button" disabled aria-label="arXiv: On hold">
+                <img class="resource-arxiv-icon" src="static/images/arxiv-logomark.svg" alt="" aria-hidden="true" width="24" height="32">
+                <span class="resource-copy"><span>arXiv</span><span class="resource-status">On hold</span></span>
+              </button>
+              <button class="hero-resource hero-resource-pending" type="button" disabled aria-label="Code: Coming soon">
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span class="resource-copy"><span>Code</span><span class="resource-status">Coming soon</span></span>
+              </button>
+            </nav>
           </div>
         </div>
       </div>
     </div>
+    <div class="hero-footer">
+      <button class="hero-playback" type="button" aria-label="Pause background video" aria-pressed="false">
+        <span class="hero-playback-icon" aria-hidden="true">Ⅱ</span>
+      </button>
+    </div>
   </section>
 
   <!-- ========== 首屏视频：长路径连续任务 ========== -->
-  <section class="hero teaser">
+  <section class="hero teaser" aria-labelledby="transport-title">
     <div class="container is-max-widescreen">
       <div class="hero-body">
-        <video id="teaser" autoplay muted loop playsinline preload="auto" poster="static/images/posters/teaser.jpg" aria-label="Teaser video">
+        <h2 class="title is-3 has-text-centered" id="transport-title">Continuous Transport with Changing Payloads</h2>
+        <video id="teaser" class="managed" muted loop playsinline preload="metadata" poster="static/images/posters/teaser.jpg" aria-label="Continuous transport with changing payloads">
           <source src="static/videos/teaser.mp4" type="video/mp4">
         </video>
         <h2 class="subtitle has-text-centered">
@@ -122,15 +165,13 @@
         <div class="column">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <!-- 论文摘要（来自 Desktop\CJME\main.tex），论文摘要改了这里也要跟着改 -->
+            <!-- 论文摘要（按作者提供的版本同步） -->
             <p>
               Humanoid robots are expected to take over strenuous material handling in manufacturing, logistics, and
               healthcare, where operating existing wheeled carts would let them move heavy loads without modifying the
               workplace. However, humanoid cart pushing remains challenging because the bimanual grasp closes a
-              force-coupled loop in which the contact wrenches that drive the cart also disturb the robot's balance,
+              force-coupled loop in which the contact wrenches that drive the cart also disturb the robot’s balance,
               and payload changes alter the coupled dynamics.
-            </p>
-            <p>
               We propose ForPC, a force-aware whole-body control framework that regulates cart velocity through
               two-stage reinforcement learning. A locomotion prior is first trained under varied hand loads and
               upper-body postures to provide balance support. A force latent and a state latent are then inferred from
@@ -138,13 +179,11 @@
               bounded arm, waist, and leg adjustments with base-velocity commands. Multi-objective rewards penalize
               bimanual internal opposition, grasp slip, and actuator saturation, encouraging the policy to apply
               contact force on demand without human demonstrations.
-            </p>
-            <p>
-              Trained solely in Isaac Sim, ForPC reduces cart-velocity RMSE by 25.7&ndash;72.8% relative to a
-              single-stage reinforcement learning baseline in Isaac Sim and MuJoCo, and reduces cross-track RMSE by
-              68.7&ndash;90.0% on multi-bend routes with payloads of 12.5&ndash;25&nbsp;kg. The policy also transfers to
-              a physical Unitree G1 without real-world training or fine-tuning, completing cart-pushing transport tasks
-              under different payloads without further adjustment. These results suggest that humanoid robots could
+              Sim-to-sim experiments show that ForPC reduces cart-velocity RMSE by up to 68.2% relative to a
+              locomotion-only baseline (Loco-only) and cross-track RMSE by up to 74.2% on the multi-bend route.
+              Trained solely in simulation, the policy also transfers to a physical Unitree G1 without real-world
+              training or fine-tuning and, with no payload-specific adjustment, pushes a cart carrying up to 30 kg
+              at 0.5 m/s. These results suggest that humanoid robots could
               eventually replace humans for efficient material handling in daily life.
             </p>
           </div>
@@ -154,6 +193,7 @@
 
     <!-- 框架图（论文 Figure 3，来自 fig03_framework.pdf）。点击图片打开原图 -->
     <div class="container is-max-widescreen framework" id="method">
+      <h2 class="title is-3 has-text-centered">Method</h2>
       <figure class="paper-figure framework-figure">
         <a href="static/images/framework.png" target="_blank" title="Open full-size figure">
           <img src="static/images/framework.png" alt="ForPC framework: locomotion prior pre-training, force estimation and force-aware state inference, and force-aware whole-body residual control">
@@ -545,7 +585,7 @@
       <!-- TODO: 论文发表后改成 @article，并加上 journal / volume / pages / doi -->
       <pre id="bibtex-code"><code>@misc{zou2026forpc,
   title  = {{ForPC}: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing},
-  author = {Zou, Zhenyu and Liu, Xing and Wang, ShiChuang and Cheng, Cheng},
+  author = {Zou, ZhenYu and Liu, Xing and Wang, ShiChuang and Dong, YunLong and Deng, LiNan and Hua, Feng and Wan, Jun and Cheng, Cheng},
   year   = {2026},
   url    = {https://roboforpc.github.io/}
 }</code></pre>

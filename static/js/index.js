@@ -111,6 +111,7 @@ function showPlaceholder(media, path) {
 
 function setupMissingMediaPlaceholders() {
     document.querySelectorAll('video').forEach(video => {
+        if (video.classList.contains('hero-background-video')) return;
         const sources = video.querySelectorAll('source');
         if (sources.length === 0) return;
         const last = sources[sources.length - 1];
@@ -136,7 +137,7 @@ const managedInView = new WeakMap();
 
 function syncManagedVideo(video) {
     const shown = video.offsetParent !== null;
-    if (shown && managedInView.get(video)) {
+    if (shown && managedInView.get(video) && !document.hidden) {
         video.play().catch(() => {});
     } else {
         video.pause();
@@ -156,6 +157,52 @@ function setupManagedVideos() {
     }, { threshold: 0.25 });
 
     document.querySelectorAll('video.managed').forEach(video => observer.observe(video));
+    document.addEventListener('visibilitychange', syncAllManagedVideos);
+}
+
+// All four delivery videos remain visible and loop independently in the 2×2 grid.
+function setupHeroBackground() {
+    const hero = document.querySelector('.publication-hero');
+    if (!hero) return;
+    const videos = Array.from(hero.querySelectorAll('.hero-background-video'));
+    const playback = hero.querySelector('.hero-playback');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = false;
+    let paused = motionPreference.matches;
+
+    function updatePlayback() {
+        playback.setAttribute('aria-label', paused ? 'Play background videos' : 'Pause background videos');
+        playback.setAttribute('aria-pressed', String(paused));
+        playback.querySelector('.hero-playback-icon').textContent = paused ? '▶' : 'Ⅱ';
+        videos.forEach(video => {
+            if (inView && !document.hidden && !paused) {
+                video.play().catch(error => {
+                    if (error.name === 'NotAllowedError' && inView && !document.hidden && !paused) {
+                        paused = true;
+                        updatePlayback();
+                    }
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }
+
+    videos.forEach(video => { video.muted = true; });
+    playback.addEventListener('click', () => {
+        paused = !paused;
+        updatePlayback();
+    });
+    new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        updatePlayback();
+    }, { threshold: 0.1 }).observe(hero);
+    document.addEventListener('visibilitychange', updatePlayback);
+    motionPreference.addEventListener('change', event => {
+        paused = event.matches;
+        updatePlayback();
+    });
+    updatePlayback();
 }
 
 // 速度跟踪部分的 vx / vy / ωz 标签页
@@ -206,6 +253,7 @@ function setupClipSwitchers() {
 
 // 脚本是 defer 加载的，执行时页面已解析完
 setupMissingMediaPlaceholders();
+setupHeroBackground();
 setupCommandTabs();
 setupClipSwitchers();
 setupManagedVideos();
