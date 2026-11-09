@@ -301,7 +301,8 @@ body {
   text-shadow: 0 1px 8px rgb(0 0 0 / 0.55);
 }
 
-.hero-resource-paper {
+.hero-resource-paper,
+.hero-resource-arxiv {
   transition: color 0.2s ease;
 }
 
@@ -309,11 +310,13 @@ body {
   color: #ff91ad;
 }
 
-.hero-resource-paper:hover {
+.hero-resource-paper:hover,
+.hero-resource-arxiv:hover {
   color: #ffb4d6;
 }
 
-.hero-resource-paper:focus-visible {
+.hero-resource-paper:focus-visible,
+.hero-resource-arxiv:focus-visible {
   outline: 2px solid #ff91c5;
   outline-offset: 4px;
 }
